@@ -17,3 +17,5 @@ let bar = 20;
 let qwerty = 5;
 let res = bar - qwerty - 10;
 let end = res - qwerty;
+let str = "Hello, Palmo";
+alert(str);
