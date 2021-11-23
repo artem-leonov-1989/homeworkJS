@@ -13,3 +13,7 @@ console.log("Деление first и second = " + divisionFirstSecond);
 let a = 3;
 let b = 10;
 let result = a + b;
+let bar = 20;
+let qwerty = 5;
+let res = bar - qwerty - 10;
+let end = res - qwerty;
