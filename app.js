@@ -19,3 +19,6 @@ let res = bar - qwerty - 10;
 let end = res - qwerty;
 let str = "Hello, Palmo";
 alert(str);
+const name = "Артём"
+const age = 32;
+alert("Я " + name +", мне " + age);
