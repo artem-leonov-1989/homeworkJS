@@ -22,3 +22,15 @@ alert(str);
 const name = "Артём"
 const age = 32;
 alert("Я " + name +", мне " + age);
+let secondHour = 60 * 60;
+let secondDay = secondHour * 24;
+let secondMonth30 = secondDay * 30;
+let secondMonth31 = secondMonth30 + secondDay;
+let secondMonth28 = secondMonth30 - secondDay * 2;
+let secondMonth29 = secondMonth30 - secondDay;
+console.log("Кол-во секунд в часе = " + secondHour);
+console.log("Кол-во секунд в дне = " + secondDay);
+console.log("Кол-во секунд в месяце с 30-ю днями = " + secondMonth30);
+console.log("Кол-во секунд в месяце с 31-м днём = " + secondMonth31);
+console.log("Кол-во секунд в месяце с 28-ю днями = " + secondMonth28);
+console.log("Кол-во секунд в месяце с 29-ю днями = " + secondMonth29);
