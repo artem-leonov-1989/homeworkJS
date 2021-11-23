@@ -34,3 +34,5 @@ console.log("Кол-во секунд в месяце с 30-ю днями = " + 
 console.log("Кол-во секунд в месяце с 31-м днём = " + secondMonth31);
 console.log("Кол-во секунд в месяце с 28-ю днями = " + secondMonth28);
 console.log("Кол-во секунд в месяце с 29-ю днями = " + secondMonth29);
+let i = 5;
+i = i**2;
