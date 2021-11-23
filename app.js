@@ -10,3 +10,6 @@ console.log("Сумма first и second = " + sumFirstSecond);
 console.log("Разность first и second = " + differenceFirstSecond);
 console.log("Произведение first и second = " + product_numbersFirstSecond);
 console.log("Деление first и second = " + divisionFirstSecond);
+let a = 3;
+let b = 10;
+let result = a + b;
