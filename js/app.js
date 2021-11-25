@@ -63,8 +63,17 @@ function iss4() {
 
 function iss5() {
     console.clear();
+    let j;
     for (let i = 1; i <= 500; i++) {
-        console.log(i);
+        j = 0;
+        for (let a = 1; a <= i; a++) {
+            if (i % a === 0) {
+                j++;
+            }
+        }
+        if (j <= 2) {
+            console.log(i);
+        }
     }
 }
 
