@@ -114,3 +114,44 @@ function iss8() {
         alert('Одно или оба числа не число!')
     }
 }
+
+function iss9() {
+    alert('Вас приветствует казино "Рай для лоха"!');
+    let bid = prompt('Введите сумму, которую вы готовы поставить! (копейки указывать после точки)');
+    let startRange = prompt('Введите цифру начала диапазона');
+    let endRange = prompt('Введите цифру конца диапазона');
+    if (!isNaN(Number(bid)) && !isNaN(Number(startRange)) && !isNaN(Number(endRange)) && bid && startRange && endRange) {
+        bid = Number(bid);
+        startRange = Number(startRange);
+        endRange = Number(endRange);
+        if (startRange < endRange) {
+            let win = bid + (endRange - startRange) * 0.1;
+            alert(`Ваш возможный выигрыш может составить ${win.toFixed(2)} UAH`);
+            let numBid = prompt('Введите число из заданного Вами диапазона на которое делаете ставку');
+            if (numBid && !isNaN(Number(numBid))) {
+                numBid = Number(numBid);
+                if (numBid >= startRange && numBid <= endRange) {
+                    let res = Number(getRandomInRange(startRange, endRange));
+                    let resMessage = `Результат лотереи (Ваша ставка - ${numBid} Выпало - ${res}). Вы `;
+                    if (numBid === res) {
+                        alert(resMessage + `выиграли ${win.toFixed(2)} UAH`);
+                    } else {
+                        alert(resMessage + `проиграли ${bid.toFixed(2)} UAH`);
+                    }
+                } else {
+                    alert('Число не находится в заданном Вами диапазоне!');
+                }
+            } else {
+                alert('Поле пустое или не числовое!');
+            }
+        } else {
+            alert('Значение конца диапазона должно быть больше значения начала диапазона!');
+        }
+    } else {
+        alert('Что-то введено не верно или не введено вообще');
+    }
+}
+
+function getRandomInRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
