@@ -152,6 +152,57 @@ function iss9() {
     }
 }
 
+function iss10() {
+    let userChoice = prompt('Введите один из вариантов (Камень, Ножницы, Бумага)');
+    if (userChoice) {
+        if (userChoice === 'Камень' || userChoice === 'Ножницы' || userChoice === 'Бумага') {
+            /* Условные обозначения вариантов:
+            1-Камень, 2-Ножницы, 3-Бумага */
+            let res = getRandomInRange(1, 3);
+            if (res === 1) {
+                alert('Мой вариант - Камень');
+            }
+            if (res === 2) {
+                alert('Мой вариант - Ножницы');
+            }
+            if (res === 3) {
+                alert('Мой вариант - Бумага');
+            }
+            if (userChoice === 'Камень' && res === 1) {
+                alert('Ничья!');
+            }
+            if (userChoice === 'Камень' && res === 2) {
+                alert('Вы поделили!');
+            }
+            if (userChoice === 'Камень' && res === 3) {
+                alert('Вы проиграли!');
+            }
+            if (userChoice === 'Ножницы' && res === 1) {
+                alert('Вы проиграли!');
+            }
+            if (userChoice === 'Ножницы' && res === 2) {
+                alert('Ничья!');
+            }
+            if (userChoice === 'Ножницы' && res === 3) {
+                alert('Вы поделили!');
+            }
+            if (userChoice === 'Бумага' && res === 1) {
+                alert('Вы поделили!');
+            }
+            if (userChoice === 'Бумага' && res === 2) {
+                alert('Вы проиграли!');
+            }
+            if (userChoice === 'Бумага' && res === 3) {
+                alert('Ничья!');
+            }
+        } else {
+            alert('Вы неверно написали один из вариантов');
+        }
+    } else {
+        alert('Вы ничего не написали');
+    }
+}
+
 function getRandomInRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
