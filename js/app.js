@@ -1,3 +1,4 @@
+// Все основные функции по заданию имеют имя iss#. Остальные - вспомогательные
 function isNum(num) {
     return !isNaN(Number(num));
 }
