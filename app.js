@@ -274,3 +274,13 @@ function getHighestSalarty(users) {
     })
     return nameUser;
 }
+
+function iss15() {
+    alert(checkStr(prompt('Введите строку')));
+}
+
+function checkStr(str) {
+    let r = /\d+/;
+    return str && str.length >= 3 && str.length <= 16 && str.search(r) < 0;
+
+}
