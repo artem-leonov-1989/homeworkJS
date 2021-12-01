@@ -86,3 +86,18 @@ function arrUnion(arr1, arr2) {
     }
     return arr;
 }
+
+function modifyString(userName) {
+    let arr = userName.split('_');
+    console.log(arr);
+    let res = arr[0];
+    console.log(res);
+    for (let i = 1; i < arr.length; i++) {
+        res = res + upFirst(arr[i]);
+    }
+    return res;
+}
+
+function iss6() {
+    alert(modifyString(prompt('Введите имя пользователя')));
+}
