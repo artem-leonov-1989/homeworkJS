@@ -164,7 +164,20 @@ function showUserName(users) {
 }
 
 function iss9() {
-    let arr = [8, 'asfsafasf', 3, 5, 'safasfsafsa'];
+    let arr = [8, 'asfsafasf', 3, 5, 'safasfsafsa']
+    console.log(rebuildMass(arr));
+}
+
+function rebuildMass(arr) {
+   return arr.map(function(item){
+        if (typeof(item) === 'number') {
+            item = item * 2;
+        }
+        if (typeof(item) === 'string' ) {
+            item = item.split('');
+        }
+        return item;
+    })
 }
 
 function iss10() {
