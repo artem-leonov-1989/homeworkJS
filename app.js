@@ -101,3 +101,33 @@ function modifyString(userName) {
 function iss6() {
     alert(modifyString(prompt('Введите имя пользователя')));
 }
+
+function calc(exp) {
+    let arr = [];
+    exp = exp.trim();
+    if (exp.indexOf('+') > 0) {
+        arr = exp.split('+')
+        return Number(arr[0].trim()) + Number(arr[1].trim());
+    }
+    if (exp.indexOf('-') > 0) {
+        arr = exp.split('-')
+        return arr[0].trim() - arr[1].trim();
+    }
+    if (exp.indexOf('*') > 0) {
+        arr = exp.split('*')
+        return arr[0].trim() * arr[1].trim();
+    }
+    if (exp.indexOf('/') > 0) {
+        arr = exp.split('/')
+        if (arr[1].trim() === '0') {
+            return 'На 0 еще не придумали как делить!'
+        } else {
+        return arr[0].trim() / arr[1].trim();
+        }
+    }
+    return 'Данная операция не поддерживается!';
+}
+
+function iss7() {
+    alert(calc(prompt('Введите мат выражение')));
+}
