@@ -239,3 +239,38 @@ function createPhoneNumber(numbers){
     }
     return format;
 }
+
+function iss14() {
+    const users = [
+        {
+            id: 1,
+            name: 'John',
+            age: 20,
+            salary: 1000
+        },
+        {
+            id: 2,
+            name: 'Marry',
+            age: 22,
+            salary: 1500
+        },
+        {
+            id: 3,
+            name: 'Poll',
+            age: 25,
+            salary: 1200
+        },
+    ]
+    alert(getHighestSalarty(users));
+}
+
+function getHighestSalarty(users) {
+    let maxSalary = 0, nameUser = '';
+    users.forEach(function (item) {
+        if (item.salary > maxSalary) {
+            maxSalary = item.salary;
+            nameUser = item.name;
+        }
+    })
+    return nameUser;
+}
