@@ -276,11 +276,23 @@ function getHighestSalarty(users) {
 }
 
 function iss15() {
-    alert(checkStr(prompt('Введите строку')));
+    alert(checkStr(prompt('Введите строку на проверку')));
 }
 
 function checkStr(str) {
     let r = /\d+/;
     return str && str.length >= 3 && str.length <= 16 && str.search(r) < 0;
 
+}
+
+function iss16() {
+    alert(checkPass(prompt('Введите пароль на проверку')));
+}
+
+function checkPass(pass) {
+    let r1 = /\d+/;
+    let r2 = /[A-Z]/;
+    console.log(pass.search(r1));
+    console.log(pass.search(r2));
+   return pass.length >=6 && pass.search(r1) >= 0 && pass.search(r2) >= 0;
 }
