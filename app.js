@@ -162,3 +162,39 @@ function showUserName(users) {
     })
     return res;
 }
+
+function iss9() {
+    let arr = [8, 'asfsafasf', 3, 5, 'safasfsafsa'];
+}
+
+function iss10() {
+    alert(isSpam(prompt('Введите сообщение')));
+}
+
+function isSpam(str) {
+    str = str.trim();
+    let arr = str.split(' ');
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length; j++) {
+            if (arr[i] === arr[j] && i !== j) {
+                return true
+            }
+        }
+    }
+    return false;
+}
+
+function iss11() {
+    alert(isFoulLanguage(prompt('Введите сообщение')));
+}
+
+function isFoulLanguage(str) {
+    const mat = ['бля', 'пиздец'];
+    let isEmpty = false;
+    mat.forEach(function (item) {
+        if (str.search(item) >= 0) {
+            isEmpty = true;
+        }
+    })
+    return isEmpty;
+}
