@@ -211,3 +211,16 @@ function isFoulLanguage(str) {
     })
     return isEmpty;
 }
+
+
+function iss13() {
+    alert(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
+}
+
+function createPhoneNumber(numbers){
+    let format = '(xxx) xxx-xxxx';
+    for (let number of numbers) {
+        format = format.replace('x', number);
+    }
+    return format;
+}
