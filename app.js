@@ -65,3 +65,24 @@ function delNoEmptyName(arrObj) {
         return user.name;
     });
 }
+
+function iss5() {
+    const arr1 = [1, 'Вася', '5', true, 1];
+    const arr2 = [true, 'Вася', 5, 'home'];
+    console.log(arrUnion(arr1, arr2));
+}
+
+function arrUnion(arr1, arr2) {
+    let arr = [];
+    for (let element of arr1) {
+        if (arr.indexOf(element) < 0) {
+            arr.push(element);
+        }
+    }
+    for (let element of arr2) {
+        if (arr.indexOf(element) < 0) {
+            arr.push(element);
+        }
+    }
+    return arr;
+}
