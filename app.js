@@ -131,3 +131,34 @@ function calc(exp) {
 function iss7() {
     alert(calc(prompt('Введите мат выражение')));
 }
+
+function iss8() {
+    const users = [
+        {
+            id: 1,
+            name: 'John',
+            age: 20
+        },
+        {
+            id: 2,
+            name: 'Marry',
+            age: 22
+        },
+        {
+            id: 3,
+            name: 'Poll',
+            age: 25
+        },
+    ]
+    console.log(showUserName(users));
+}
+
+function showUserName(users) {
+    let res = [];
+    let i = 0;
+    users.forEach(function (user) {
+        res[i] = user.name;
+        i++;
+    })
+    return res;
+}
