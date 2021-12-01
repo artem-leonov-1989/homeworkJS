@@ -173,7 +173,7 @@ function rebuildMass(arr) {
         if (typeof(item) === 'number') {
             item = item * 2;
         }
-        if (typeof(item) === 'string' ) {
+        if (typeof(item) === 'string') {
             item = item.split('');
         }
         return item;
@@ -212,6 +212,21 @@ function isFoulLanguage(str) {
     return isEmpty;
 }
 
+function iss12() {
+    alert(arrayToSentence(['Привет', 1, null, 'как', '{}', 'дела']));
+}
+
+function arrayToSentence(arr) {
+    let str = '';
+    arr.forEach(function (item) {
+        if (typeof(item) === 'string') {
+            if (item.replace(/[^a-zа-яё\s]/gi, '').length !== 0) {
+                str = str + item + ' ';
+            }
+        }
+    })
+    return str.trimEnd();
+}
 
 function iss13() {
     alert(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
