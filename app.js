@@ -47,3 +47,10 @@ function iss7_2() {
     document.getElementById('iss7-2').style.backgroundColor = 'red';
     document.getElementById('iss7-1').style.backgroundColor = 'green';
 }
+
+function iss8() {
+    let ul = document.getElementById('iss8_ul');
+    let li = document.createElement("li");
+    li.appendChild(document.createTextNode(String(ul.children.length + 1)));
+    ul.appendChild(li);
+}
