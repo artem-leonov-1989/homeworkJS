@@ -30,3 +30,12 @@ function iss5() {
     }
 }
 
+function iss6() {
+    if (document.getElementsByName('inputTextIss6')[0].disabled === true) {
+        document.getElementsByName('inputTextIss6')[0].disabled = false;
+    } else {
+        document.getElementsByName('inputTextIss6')[0].disabled = true;
+    }
+
+}
+
