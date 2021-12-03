@@ -36,6 +36,14 @@ function iss6() {
     } else {
         document.getElementsByName('inputTextIss6')[0].disabled = true;
     }
-
 }
 
+function iss7_1() {
+    document.getElementById('iss7-1').style.backgroundColor = 'red';
+    document.getElementById('iss7-2').style.backgroundColor = 'green';
+}
+
+function iss7_2() {
+    document.getElementById('iss7-2').style.backgroundColor = 'red';
+    document.getElementById('iss7-1').style.backgroundColor = 'green';
+}
