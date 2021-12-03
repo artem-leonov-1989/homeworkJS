@@ -54,3 +54,14 @@ function iss8() {
     li.appendChild(document.createTextNode(String(ul.children.length + 1)));
     ul.appendChild(li);
 }
+
+function iss9() {
+    let element = document.getElementById('iss9Text');
+    let mainDiv = document.getElementById('iss9Div');
+    const list = element.value.split('\n');
+    for (let i = 0; i < list.length; i++) {
+        let div = document.createElement('div');
+        div.innerText = `${i + 1}. ${list[i]}`;
+        mainDiv.appendChild(div);
+    }
+}
