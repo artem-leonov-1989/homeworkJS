@@ -9,3 +9,10 @@ function iss2() {
 function iss3() {
     console.log(document.getElementsByName('inputTextIss3')[0].value);
 }
+
+function iss4() {
+    let elements = document.querySelectorAll('body > h1');
+    let buffer = elements[0].innerHTML;
+    elements[0].innerHTML = elements[1].innerHTML;
+    elements[1].innerHTML = buffer;
+}
