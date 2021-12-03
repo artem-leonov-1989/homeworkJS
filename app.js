@@ -16,3 +16,17 @@ function iss4() {
     elements[0].innerHTML = elements[1].innerHTML;
     elements[1].innerHTML = buffer;
 }
+
+let colorBuffer = '';
+
+function iss5() {
+    let element = document.querySelectorAll('body > p');
+    if (colorBuffer === '') {
+        colorBuffer = element[0].style.color;
+        element[0].style.color = 'red';
+    } else {
+        element[0].style.color = colorBuffer;
+        colorBuffer = '';
+    }
+}
+
