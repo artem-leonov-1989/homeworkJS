@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
@@ -29,6 +30,22 @@
 <div id="iss9Div">
 <textarea style="width: 300px; height: 150px;" id="iss9Text"></textarea>
 <button type="button" onclick="iss9()">Задание №9</button>
+</div>
+<div id="iss10Div">
+    <form class="form" id="iss10Form">
+        <input class="input" type="text" placeholder="Ваше имя" name="userName" id="userName">
+        <label for="userName">Не верный формат логина.</label>
+        <input class="input" type="email" placeholder="Ваш e-mail" name="userEmail" id="userEmail">
+        <label for="userEmail">Не верный формат e-mail.</label>
+        <input class="input" type="text" placeholder="Ваш возраст" name="userAge" id="userAge">
+        <label for="userAge">Не верный формат записи возраста.</label>
+        <input class="input" type="password" placeholder="Пароль" name="pass" id="pass">
+        <label for="pass">Не верный формат пароля.</label>
+        <input class="input" type="password" placeholder="Пароль еще раз" name="repPass" id="repPass">
+        <label for="repPass">Не совпадает с предыдущим полем.</label>
+        <button class="btn" type="button" onclick="iss10()">Задание №10</button>
+        <div id="successfully">Форма отправлена успешно</div>
+    </form>
 </div>
 <script src="app.js"></script>
 </body>
