@@ -121,3 +121,55 @@ function changeProperties (id, show) {
         document.querySelector(`[for = ${id.id}]`).style.display = 'none';
     }
 }
+
+function iss11() {
+    console.clear();
+    let str = document.getElementsByName('input')[0];
+    if (str.value) {
+        if (str.value.search(/\d+/) === 0) {
+            let arr = [];
+            arr[0] = str.value.split('+');
+            arr[1] = str.value.split('-');
+            arr[2] = str.value.split('*');
+            arr[3] = str.value.split('/');
+            console.log(arr[0]);
+            console.log(arr[1]);
+            console.log(arr[2]);
+            console.log(arr[3]);
+            let i = 0;
+            while (arr[i].length < 2) {
+                i++;
+            }
+            if (!isNaN(Number(arr[i][0])) && !isNaN(Number(arr[i][1]))) {
+                arr[i][0] = Number(arr[i][0]);
+                arr[i][1] = Number(arr[i][1]);
+                if (i === 0) {
+                    str.value = arr[i][0] + arr[i][1];
+                }
+                if (i === 1) {
+                    str.value = arr[i][0] - arr[i][1];
+                }
+                if (i === 2) {
+                    str.value = arr[i][0] * arr[i][1];
+                }
+                if (i === 3 && arr[i][1] !== 0) {
+                    str.value = arr[i][0] / arr[i][1];
+                }
+                if (i === 3 && arr[i][1] === 0) {
+                    warning(str, 'Деление на ноль!');
+                }
+            } else {
+                warning(str, 'Больше одной операции!');
+            }
+        } else {
+            warning(str, 'Первый символ не цифра!');
+        }
+    } else {
+        warning(str, 'Нечего вычислять!');
+    }
+}
+
+function warning(obj, message) {
+    obj.value = message;
+    setTimeout(()=> obj.value = '', 1000)
+}

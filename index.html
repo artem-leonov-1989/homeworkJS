@@ -31,7 +31,7 @@
 <textarea style="width: 300px; height: 150px;" id="iss9Text"></textarea>
 <button type="button" onclick="iss9()">Задание №9</button>
 </div>
-<div id="iss10Div">
+<div>
     <form class="form" id="iss10Form">
         <input class="input" type="text" placeholder="Ваше имя" name="userName" id="userName">
         <label for="userName">Не верный формат логина.</label>
@@ -47,6 +47,37 @@
         <div id="successfully">Форма отправлена успешно</div>
     </form>
 </div>
+<form name="calc" class="wrapper">
+    <table class="main">
+        <tr class="display">
+            <td colspan="4"><input type="text" name="input" disabled></td>
+        </tr>
+        <tr class="buttons">
+            <td><input type="button" value="1" onclick="calc.input.value += '1'"></td>
+            <td><input type="button" value="2" onclick="calc.input.value += '2'"></td>
+            <td><input type="button" value="3" onclick="calc.input.value += '3'"></td>
+            <td><input type="button" value="+" onclick="calc.input.value += '+'"></td>
+        </tr>
+        <tr class="buttons">
+            <td><input type="button" value="4" onclick="calc.input.value += '4'"></td>
+            <td><input type="button" value="5" onclick="calc.input.value += '5'"></td>
+            <td><input type="button" value="6" onclick="calc.input.value += '6'"></td>
+            <td><input type="button" value="-" onclick="calc.input.value += '-'"></td>
+        </tr>
+        <tr class="buttons">
+            <td><input type="button" value="7" onclick="calc.input.value += '7'"></td>
+            <td><input type="button" value="8" onclick="calc.input.value += '8'"></td>
+            <td><input type="button" value="9" onclick="calc.input.value += '9'"></td>
+            <td><input type="button" value="x" onclick="calc.input.value += '*'"></td>
+        </tr>
+        <tr class="buttons">
+            <td><input type="reset" value="c" onclick="calc.input.value = ''"></td>
+            <td><input type="button" value="0" onclick="calc.input.value += '0'"></td>
+            <td><input type="button" value="=" onclick="iss11()"></td>
+            <td><input type="button" value="/" onclick="calc.input.value += '/'"></td>
+        </tr>
+    </table>
+</form>
 <script src="app.js"></script>
 </body>
 </html>
