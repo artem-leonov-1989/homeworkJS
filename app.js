@@ -31,11 +31,7 @@ function iss5() {
 }
 
 function iss6() {
-    if (document.getElementsByName('inputTextIss6')[0].disabled === true) {
-        document.getElementsByName('inputTextIss6')[0].disabled = false;
-    } else {
-        document.getElementsByName('inputTextIss6')[0].disabled = true;
-    }
+    document.getElementsByName('inputTextIss6')[0].disabled = document.getElementsByName('inputTextIss6')[0].disabled !== true;
 }
 
 function iss7_1() {
@@ -172,4 +168,80 @@ function iss11() {
 function warning(obj, message) {
     obj.value = message;
     setTimeout(()=> obj.value = '', 1000)
+}
+
+const productList = ['Презерватив', 'Вино', 'Конфеты', 'Цветы'];
+
+let basket = {};
+let showcase = document.getElementById('showcase');
+for (let i = 0; i < productList.length; i++) {
+    let tr = document.createElement('tr');
+    let td = document.createElement('td');
+    td.innerText = productList[i];
+    tr.appendChild(td);
+    let tdBtn = document.createElement('td');
+    let productBtn = document.createElement('button');
+    productBtn.setAttribute('data-id', productList[i]);
+    productBtn.addEventListener('click',function () {
+        let id = productBtn.dataset.id;
+        addBasket(id);
+    })
+    productBtn.innerText = 'Добавить';
+    tdBtn.appendChild(productBtn);
+    tr.appendChild(tdBtn);
+    showcase.appendChild(tr);
+}
+
+function addBasket (id) {
+    if (basket.hasOwnProperty(id)) {
+        basket[id]++;
+    } else {
+        basket[id] = 1;
+    }
+}
+
+let modal = document.getElementById("my_modal");
+let btn = document.getElementById("btn_modal_window");
+let span = document.getElementsByClassName("close_modal_window")[0];
+
+btn.onclick = function () {
+    modal.style.display = "block";
+    let showBasket = document.getElementById('showBasket');
+    for (let key in basket) {
+        let tr = document.createElement('tr');
+        let nameItem = document.createElement('td');
+        let countItem = document.createElement('td');
+        nameItem.innerText = key;
+        countItem.innerText = basket[key];
+        tr.appendChild(nameItem);
+        tr.appendChild(countItem);
+        showBasket.appendChild(tr);
+    }
+    let count = showBasket.querySelectorAll('tr').length;
+    if (count > 0) {
+        let clearBtn = document.createElement('button');
+        clearBtn.innerText = 'Очистить корзину';
+        clearBtn.onclick = function () {
+            basket = {};
+            modal.style.display = "none";
+            while (showBasket.firstChild) {
+                showBasket.removeChild(showBasket.firstChild);
+            }
+        }
+        showBasket.appendChild(clearBtn);
+    }
+}
+
+span.onclick = function () {
+    modal.style.display = "none";
+    let showBasket = document.getElementById('showBasket');
+    while (showBasket.firstChild) {
+        showBasket.removeChild(showBasket.firstChild);
+    }
+}
+
+window.onclick = function (event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
 }
