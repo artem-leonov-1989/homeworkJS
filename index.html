@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+<button type="button" onclick="iss1()">Задание №1</button><br>
+<button type="button" onclick="iss2()">Задание №2</button>
+<input type="text" value="Hello, Palmo" name="inputTextIss2"><br>
+<button type="button" onclick="iss3()">Задание №3</button>
+<input type="text" name="inputTextIss3" placeholder="Что вывести в консоль?"><br>
+<button type="button" onclick="iss4()">Задание №4</button>
+<h1>First text</h1>
+<h1>Second text</h1>
+<p style="color: aqua;">dprfdpf dpfogk dpfodpof gkpdfogkdpfogk d</p>
+<button type="button" onclick="iss5()">Задание №5</button><br>
+<button type="button" onclick="iss6()">Задание №6</button>
+<input type="text" name="inputTextIss6" placeholder="Тестовое поле ввода"><br>
+<div style="display: flex;">
+    <div style="width: 100px; height: 100px; background-color: green" id="iss7-1" onclick="iss7_1()"></div>
+    <div style="width: 100px; height: 100px; background-color: red" id="iss7-2" onclick="iss7_2()"></div>
+</div><br>
+<button type="button" onclick="iss8()">Задание №8</button>
+<ul id="iss8_ul"></ul><br>
+<div id="iss9Div">
+<textarea style="width: 300px; height: 150px;" id="iss9Text"></textarea>
+<button type="button" onclick="iss9()">Задание №9</button>
+</div>
+<div>
+    <form class="form" id="iss10Form">
+        <input class="input" type="text" placeholder="Ваше имя" name="userName" id="userName">
+        <label for="userName">Не верный формат логина.</label>
+        <input class="input" type="email" placeholder="Ваш e-mail" name="userEmail" id="userEmail">
+        <label for="userEmail">Не верный формат e-mail.</label>
+        <input class="input" type="text" placeholder="Ваш возраст" name="userAge" id="userAge">
+        <label for="userAge">Не верный формат записи возраста.</label>
+        <input class="input" type="password" placeholder="Пароль" name="pass" id="pass">
+        <label for="pass">Не верный формат пароля.</label>
+        <input class="input" type="password" placeholder="Пароль еще раз" name="repPass" id="repPass">
+        <label for="repPass">Не совпадает с предыдущим полем.</label>
+        <button class="btn" type="button" onclick="iss10()">Задание №10</button>
+        <div id="successfully">Форма отправлена успешно</div>
+    </form>
+</div>
+<form name="calc" class="wrapper">
+    <table class="main">
+        <tr class="display">
+            <td colspan="4"><input type="text" name="input" disabled></td>
+        </tr>
+        <tr class="buttons">
+            <td><input type="button" value="1" onclick="calc.input.value += '1'"></td>
+            <td><input type="button" value="2" onclick="calc.input.value += '2'"></td>
+            <td><input type="button" value="3" onclick="calc.input.value += '3'"></td>
+            <td><input type="button" value="+" onclick="calc.input.value += '+'"></td>
+        </tr>
+        <tr class="buttons">
+            <td><input type="button" value="4" onclick="calc.input.value += '4'"></td>
+            <td><input type="button" value="5" onclick="calc.input.value += '5'"></td>
+            <td><input type="button" value="6" onclick="calc.input.value += '6'"></td>
+            <td><input type="button" value="-" onclick="calc.input.value += '-'"></td>
+        </tr>
+        <tr class="buttons">
+            <td><input type="button" value="7" onclick="calc.input.value += '7'"></td>
+            <td><input type="button" value="8" onclick="calc.input.value += '8'"></td>
+            <td><input type="button" value="9" onclick="calc.input.value += '9'"></td>
+            <td><input type="button" value="x" onclick="calc.input.value += '*'"></td>
+        </tr>
+        <tr class="buttons">
+            <td><input type="reset" value="c" onclick="calc.input.value = ''"></td>
+            <td><input type="button" value="0" onclick="calc.input.value += '0'"></td>
+            <td><input type="button" value="=" onclick="iss11()"></td>
+            <td><input type="button" value="/" onclick="calc.input.value += '/'"></td>
+        </tr>
+    </table>
+</form>
+<table id="showcase">
+    <caption>Готовимся к свиданию</caption>
+</table>
+<button id="btn_modal_window">Корзина</button>
+<div id="my_modal" class="modal">
+    <div class="modal_content">
+        <span class="close_modal_window">×</span>
+        <table id="showBasket"></table>
+    </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
