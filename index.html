@@ -5,13 +5,18 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Учет ТМЦ</title>
+    <title>Учет товаров на складе</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="text-centre"><h1>Учет ТМЦ</h1></div>
+<div class="text-centre"><h1>Учет товаров на складе</h1></div>
 <div class="flex content">
-    <div class="flex flex-column leftPanel border"></div>
+    <div class="flex flex-column leftPanel">
+        <button type="button" class="leftPanelButton">Добавить</button>
+        <button type="button" class="leftPanelButton">Поиск</button>
+        <button type="button" class="leftPanelButton">Отпуск</button>
+        <button type="button" class="leftPanelButton">Резервирование</button>
+    </div>
     <div class="flex flex-column partsList border"></div>
 </div>
 <script src="app.js"></script>
