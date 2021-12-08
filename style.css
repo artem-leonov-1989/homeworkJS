@@ -59,6 +59,7 @@
     margin-right: auto;
     margin-left: auto;
     padding-top: 5px;
+    padding-bottom: 10px;
 }
 
 .modalHeader {
@@ -72,5 +73,11 @@
 }
 
 .modalContent {
+    margin-left: 18px;
+    margin-right: 18px;
+}
 
+.modalContent input {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
