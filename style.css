@@ -2,6 +2,7 @@
     display: flex;
 }
 
+
 .content {
     justify-content: space-around;
     width: 1000px;
@@ -29,29 +30,47 @@
     border-radius: 10px;
 }
 
-.text-centre {
+.text-center {
     text-align: center;
+}
+
+.leftPanelButton {
+    margin-bottom: 12px;
 }
 
 .modal {
     z-index: 100;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     opacity: 1;
-    display: none;
 }
 
 .modalWindow {
     width: 500px;
-    height: 500px;
+    min-height: 50px;
     position: relative;
-    margin-top: 10px;
+    margin-top: 150px;
     background-color: white;
     border-radius: 16px;
     margin-right: auto;
     margin-left: auto;
+    padding-top: 5px;
+}
+
+.modalHeader {
+    font-size: xx-large;
+}
+
+.modalClose {
+    justify-content: end;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.modalContent {
+
 }
