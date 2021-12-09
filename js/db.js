@@ -16,8 +16,7 @@ function openDB() {
         console.log("Обновление структуры БД...");
         let store = event.currentTarget.result.createObjectStore(
             'accessories', { keyPath: 'id', autoIncrement: true });
-        store.createIndex('idAccessories', 'idAccessories', {unique: true});
-        store.createIndex('nameAccessories', 'nameAccessories', {unique: false});
+        store.createIndex('nameAccessories', 'nameAccessories', {unique: true});
     };
 }
 
@@ -32,10 +31,25 @@ function DateNow() {
 }
 
 function addAccessories() {
-    let obj = {idAccessories: 100, nameAccessories: 'Подшипник 301 ГОСТ 520-2014', price: 25.8, update: DateNow()};
-    let store = getObjectStore('accessories', 'readwrite');
+    const storeName = 'accessories';
+    const controlKey = 'nameAccessories';
+    let Obj = {nameAccessories: document.getElementById('modalInput').value, price: document.getElementById('modalInput1').value, createAt: DateNow()};
+    let store = getObjectStore(storeName, 'readonly');
+    let index = store.index(controlKey);
+    index.get(Obj.nameAccessories).onsuccess = function (event) {
+        if (event.target.result === undefined) {
+            console.log('Добавление нового комплектующего в БД...');
+            addInDB(storeName, Obj);
+        } else {
+            alert('Такое название уже существует в справочнике БД!');
+        }
+    }
+}
+
+function addInDB(storeName, Obj) {
+    let store = getObjectStore(storeName, 'readwrite');
     let req;
-    req = store.add(obj);
+    req = store.add(Obj);
     req.onsuccess = function () {
         console.log("Новое комплектующее добавлено успешно!");
     };
