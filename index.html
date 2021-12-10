@@ -11,12 +11,13 @@
 </head>
 <body>
 <div class="container-fluid">
+    <div class="d-flex justify-content-center"><h1>Склад комплектующих</h1></div>
     <div class="row">
-        <div class="d-flex justify-content-center"><h1>Склад комплектующих</h1></div>
         <div class="d-grid gap-2 col-3 mx-auto" id="leftPanel">
-            <button type="button" class="btn btn-outline-primary" onclick="getTable('accessories')">Обновить</button>
             <button type="button" class="btn btn-outline-primary" onclick="addItemForm()">Добавить позицию</button>
-            <button type="button" class="btn btn-outline-primary">Поиск</button>
+            <button type="button" class="btn btn-outline-primary" onclick="addSearchForm()">Поиск по названию</button>
+            <button type="button" class="btn btn-outline-warning" onclick="addDefaultAccessories()">Добавить дефолный список</button>
+            <button type="button" class="btn btn-outline-secondary" onclick="getAllAccessories()">Сбросить</button>
         </div>
         <div class="col-9" id="rightPanel">
             <table class="table" id="mainTable">
@@ -27,6 +28,7 @@
                     <th scope="col">Количество</th>
                     <th scope="col">Цена за шт/кг</th>
                     <th scope="col">Товара на сумму</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody></tbody>

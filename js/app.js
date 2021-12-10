@@ -2,6 +2,10 @@ function addItemForm() {
     createModalWindow('Добавление новой позиции.', ['Название комплектующего', 'Цена за единицу товара', 'Количество'], 'Принять на склад', 'addAccessories()');
 }
 
+function addSearchForm () {
+    createModalWindow('Поиск по названию', 'Поиск..', 'Найти', 'searchNameInBD()');
+}
+
 function createModalWindow(headerText, placeholder, textButton, nameFunction) {
     const htmlCode = "<div class=\"modal-dialog\">\n" +
         "<div class=\"modal-content\">\n" +
@@ -50,5 +54,19 @@ function createModalWindow(headerText, placeholder, textButton, nameFunction) {
 
 function destroyModalWindow() {
     document.getElementsByClassName('modal')[0].remove();
+}
+
+function addDefaultAccessories() {
+    const arr = [
+        {nameAccessories: 'Подшипник 310 ГОСТ 520-2014', price: 25.35, amount: 3, updateAT: DateNow()},
+        {nameAccessories: 'Подшипник NU 7015 SKF', price: 8225, amount: 1, updateAT: DateNow()},
+        {nameAccessories: 'Подшипник NN 3015 P5', price: 12563.25, amount: 5, updateAT: DateNow()},
+        {nameAccessories: 'Смазка Cluber', price: 180, amount: 0.5, updateAT: DateNow()},
+        {nameAccessories: 'Пакля', price: 5.40, amount: 12.25, updateAT: DateNow()}
+    ]
+    for (let obj of arr) {
+        addInDB('accessories', obj);
+    }
+    getAllAccessories();
 }
 

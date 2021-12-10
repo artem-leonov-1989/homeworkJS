@@ -8,6 +8,7 @@ function openDB() {
     req.onsuccess = function () {
         db = req.result;
         console.log('К работе с БД готов!');
+        getAllAccessories();
     }
     req.onerror = function (event) {
         console.error("При доступе к ДБ произошла ошибка:", event.target.errorCode);
@@ -15,7 +16,7 @@ function openDB() {
     req.onupgradeneeded = function (event) {
         console.log("Обновление структуры БД...");
         let storeAccessories = event.currentTarget.result.createObjectStore('accessories', { keyPath: 'id', autoIncrement: true });
-        storeAccessories.createIndex('nameAccessories', 'nameAccessories', {unique: true});
+        storeAccessories.createIndex('nameAccessories', 'nameAccessories', {unique: false});
     };
 }
 
@@ -31,11 +32,11 @@ function DateNow() {
 
 function addAccessories() {
     let Obj = {nameAccessories: document.getElementById('modalInput').value, price: document.getElementById('modalInput1').value, amount: document.getElementById('modalInput2').value, updateAT: DateNow()};
-    if (Obj.nameAccessories.length >= 3 && Obj.amount && Obj.price &&!isNaN(Obj.amount) && !isNaN(Obj.price)) {
+    if (Obj.nameAccessories.length >= 3 && Obj.amount && Obj.price &&!isNaN(Obj.amount) && !isNaN(Obj.price) && Obj.price >= 0 && Obj.amount > 0) {
         let store = getObjectStore('accessories', 'readwrite');
         let index = store.index('nameAccessories');
         index.get(Obj.nameAccessories).onsuccess = function (event) {
-            if (event.target.result === undefined) {
+            /*if (event.target.result === undefined) {*/
                 console.log('Добавление нового комплектующего в БД...');
                 let price = +Obj.price;
                 let amount = +Obj.amount;
@@ -43,10 +44,10 @@ function addAccessories() {
                 Obj.amount = amount.toFixed(3);
                 addInDB('accessories', Obj);
                 destroyModalWindow();
-                getTable('accessories');
-            } else {
+                getAllAccessories();
+            /*} else {
                 alert('Такое название уже существует!');
-            }
+            }*/
         }
     } else {
         let alert = document.getElementsByClassName('alert')[0];
@@ -54,14 +55,14 @@ function addAccessories() {
         if (Obj.nameAccessories.length < 3) {
             textError = textError + 'Название должно быть не менее 3х символов.\n';
         }
-        if (!Obj.amount) {
-            textError = textError + 'Вы не указали количество товара.\n';
+        if (!Obj.amount || Obj.amount <= 0) {
+            textError = textError + 'Вы не указали количество товара или оно равно 0.\n';
         }
         if (isNaN(Obj.amount)) {
             textError = textError + 'Количество должно быть числом (десятые через точку).\n';
         }
-        if (!Obj.price) {
-            textError = textError + 'Вы не указали цену товара.\n';
+        if (!Obj.price || Obj.price < 0) {
+            textError = textError + 'Вы не указали цену товара или цена ниже 0.\n';
         }
         if (isNaN(Obj.price)) {
             textError = textError + 'Цена должна быть числом с точкой.';
@@ -87,12 +88,19 @@ function destroyTableContent() {
     document.querySelector('#mainTable > tbody').innerHTML='';
 }
 
-function getTable(storeName) {
+function getAllAccessories () {
     destroyTableContent();
-    let objStore = db.transaction(storeName).objectStore(storeName);
+    let objStore = getObjectStore('accessories', 'readonly');
     objStore.openCursor().onsuccess = function (event) {
         let cursor = event.target.result;
         if (cursor) {
+            getRowTable(cursor);
+            cursor.continue();
+        }
+    }
+}
+
+function getRowTable(cursor) {
             let tr = document.createElement('tr');
             let thId = document.createElement('th');
             thId.setAttribute('scope', 'row');
@@ -105,14 +113,55 @@ function getTable(storeName) {
             tdAmount.innerText = cursor.value.amount;
             let tdSum = document.createElement('td');
             tdSum.innerText = String(cursor.value.price * (cursor.value.amount));
+            let tdDel = document.createElement('td');
+            let buttonDel = document.createElement('button');
+            buttonDel.type = 'button';
+            buttonDel.classList.add('btn');
+            buttonDel.classList.add('btn-outline-danger');
+            buttonDel.innerText = 'Удалить';
+            buttonDel.setAttribute('onclick', `deleteItemBD(${cursor.value.id})`);
+            tdDel.appendChild(buttonDel);
             tr.appendChild(thId);
             tr.appendChild(tdName);
             tr.appendChild(tdAmount);
             tr.appendChild(tdPrice);
             tr.appendChild(tdSum);
+            tr.appendChild(tdDel);
             document.querySelector('#mainTable > tbody').appendChild(tr);
-            cursor.continue();
+}
+
+function deleteItemBD(id) {
+    let req = getObjectStore('accessories', 'readwrite');
+    req.delete(id);
+    req.onsuccess = function (event) {
+        console.log(`Позиция с id=${id} удалена!`);
+    }
+    req.onerror = function (event) {
+        console.log('Ошибка при удаление!' , event.target.result);
+    }
+    getAllAccessories();
+}
+
+function searchNameInBD() {
+    let str = document.getElementById('modalInput').value;
+    if (str.length < 3) {
+        let alert = document.getElementsByClassName('alert')[0];
+        alert.innerText = 'Название должно быть не менее 3х символов.';
+        alert.style.display = 'block';
+    } else {
+        let objStore = getObjectStore('accessories', 'readonly');
+        destroyTableContent();
+        destroyModalWindow();
+        objStore.openCursor().onsuccess = function (event) {
+            let cursor = event.target.result;
+            if (cursor) {
+                if (cursor.value.nameAccessories.includes(str)) {
+                    getRowTable(cursor);
+                }
+                cursor.continue();
+            }
         }
     }
 }
+
 openDB();
