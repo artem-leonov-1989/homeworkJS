@@ -14,12 +14,24 @@
     <div class="row">
         <div class="d-flex justify-content-center"><h1>Склад комплектующих</h1></div>
         <div class="d-grid gap-2 col-3 mx-auto" id="leftPanel">
+            <button type="button" class="btn btn-outline-primary" onclick="getTable('accessories')">Обновить</button>
             <button type="button" class="btn btn-outline-primary" onclick="addItemForm()">Добавить позицию</button>
-            <button type="button" class="btn btn-outline-primary">Поиск по наименованию</button>
-            <button type="button" class="btn btn-outline-primary">Редактировать</button>
-            <button type="button" class="btn btn-outline-primary">Удалить</button>
+            <button type="button" class="btn btn-outline-primary">Поиск</button>
         </div>
-        <div class="col-9" id="rightPanel"></div>
+        <div class="col-9" id="rightPanel">
+            <table class="table" id="mainTable">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Название</th>
+                    <th scope="col">Количество</th>
+                    <th scope="col">Цена за шт/кг</th>
+                    <th scope="col">Товара на сумму</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
     </div>
 </div>
 <script src="js/bootstrap.bundle.min.js"></script>

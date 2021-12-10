@@ -51,3 +51,4 @@ function createModalWindow(headerText, placeholder, textButton, nameFunction) {
 function destroyModalWindow() {
     document.getElementsByClassName('modal')[0].remove();
 }
+

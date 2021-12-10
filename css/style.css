@@ -6,3 +6,7 @@
 .modal input[type=text] {
     margin-bottom: 10px;
 }
+
+#leftPanel {
+    height: 200px;
+}
