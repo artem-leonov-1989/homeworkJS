@@ -164,4 +164,27 @@ function searchNameInBD() {
     }
 }
 
+function searchPriceInBD() {
+    let minPrice = document.getElementById('modalInput').value;
+    let maxPrice = document.getElementById('modalInput1').value;
+    if (!isNaN(minPrice) && !isNaN(maxPrice)) {
+        let obj = getObjectStore('accessories', 'readonly');
+        destroyTableContent();
+        destroyModalWindow();
+        obj.openCursor().onsuccess = function (event) {
+            let cursor = event.target.result;
+            if (cursor) {
+                if (cursor.value.price >= minPrice && cursor.value.price <= maxPrice) {
+                    getRowTable(cursor);
+                }
+                cursor.continue();
+            }
+        }
+    } else {
+        let alert = document.getElementsByClassName('alert')[0];
+        alert.innerText = 'Один из параметров не цифровой!!';
+        alert.style.display = 'block';
+    }
+}
+
 openDB();

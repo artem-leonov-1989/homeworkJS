@@ -2,8 +2,12 @@ function addItemForm() {
     createModalWindow('Добавление новой позиции.', ['Название комплектующего', 'Цена за единицу товара', 'Количество'], 'Принять на склад', 'addAccessories()');
 }
 
-function addSearchForm () {
+function addSearchForm() {
     createModalWindow('Поиск по названию', 'Поиск..', 'Найти', 'searchNameInBD()');
+}
+
+function addSearchPriceForm() {
+    createModalWindow('Поиск по названию', ['Минимальная цена', 'Максимальная цена'], 'Найти', 'searchPriceInBD()');
 }
 
 function createModalWindow(headerText, placeholder, textButton, nameFunction) {
