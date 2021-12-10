@@ -112,8 +112,7 @@ function getRowTable(cursor) {
             let tdAmount = document.createElement('td');
             tdAmount.innerText = cursor.value.amount;
             let tdSum = document.createElement('td');
-            let sum =(cursor.value.price * cursor.value.amount).toFixed(2);
-            tdSum.innerText = sum;
+            tdSum.innerText = (cursor.value.price * cursor.value.amount).toFixed(2);
             let tdDel = document.createElement('td');
             let buttonDel = document.createElement('button');
             buttonDel.type = 'button';
