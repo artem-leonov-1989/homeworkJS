@@ -1,5 +1,5 @@
 function addItemForm() {
-    createModalWindow('Добавление новой позиции.', ['Название комплектующего', 'Цена за единицу товара'], 'Принять на склад', 'addAccessories()');
+    createModalWindow('Добавление новой позиции.', ['Название комплектующего', 'Цена за единицу товара', 'Количество'], 'Принять на склад', 'addAccessories()');
 }
 
 function createModalWindow(headerText, placeholder, textButton, nameFunction) {
@@ -40,6 +40,12 @@ function createModalWindow(headerText, placeholder, textButton, nameFunction) {
     } else {
         document.getElementById('modalInput').setAttribute('placeholder', placeholder);
     }
+    let error = document.createElement('div');
+    error.classList.add('alert');
+    error.classList.add('alert-danger');
+    error.setAttribute('role', 'alert');
+    error.style.display ='none';
+    document.getElementsByClassName('modal-body')[0].appendChild(error);
 }
 
 function destroyModalWindow() {
