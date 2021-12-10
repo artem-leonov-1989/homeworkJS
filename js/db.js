@@ -1,6 +1,7 @@
 let db;
 const DB_NAME = 'warehouse';
 const DB_VERSION = 1;
+let arrRowTable = [];
 
 function openDB() {
     console.log('Получение доступа к БД...');
@@ -44,6 +45,7 @@ function addAccessories() {
                 Obj.amount = amount.toFixed(3);
                 addInDB('accessories', Obj);
                 destroyModalWindow();
+                arrRowTable = [];
                 getAllAccessories();
             /*} else {
                 alert('Такое название уже существует!');
@@ -90,6 +92,7 @@ function destroyTableContent() {
 
 function getAllAccessories () {
     destroyTableContent();
+    arrRowTable = [];
     let objStore = getObjectStore('accessories', 'readonly');
     objStore.openCursor().onsuccess = function (event) {
         let cursor = event.target.result;
@@ -128,6 +131,38 @@ function getRowTable(cursor) {
             tr.appendChild(tdSum);
             tr.appendChild(tdDel);
             document.querySelector('#mainTable > tbody').appendChild(tr);
+            let obj = {id: cursor.value.id, nameAccessories: cursor.value.nameAccessories, price: cursor.value.price, amount: cursor.value.amount};
+            arrRowTable.push(obj);
+}
+
+function getRowTableSort(cursor) {
+    let tr = document.createElement('tr');
+    let thId = document.createElement('th');
+    thId.setAttribute('scope', 'row');
+    thId.innerText = cursor.id;
+    let tdName = document.createElement('td');
+    tdName.innerText = cursor.nameAccessories;
+    let tdPrice = document.createElement('td');
+    tdPrice.innerText = cursor.price;
+    let tdAmount = document.createElement('td');
+    tdAmount.innerText = cursor.amount;
+    let tdSum = document.createElement('td');
+    tdSum.innerText = (cursor.price * cursor.amount).toFixed(2);
+    let tdDel = document.createElement('td');
+    let buttonDel = document.createElement('button');
+    buttonDel.type = 'button';
+    buttonDel.classList.add('btn');
+    buttonDel.classList.add('btn-outline-danger');
+    buttonDel.innerText = 'Удалить';
+    buttonDel.setAttribute('onclick', `deleteItemBD(${cursor.id})`);
+    tdDel.appendChild(buttonDel);
+    tr.appendChild(thId);
+    tr.appendChild(tdName);
+    tr.appendChild(tdAmount);
+    tr.appendChild(tdPrice);
+    tr.appendChild(tdSum);
+    tr.appendChild(tdDel);
+    document.querySelector('#mainTable > tbody').appendChild(tr);
 }
 
 function deleteItemBD(id) {
@@ -187,4 +222,25 @@ function searchPriceInBD() {
     }
 }
 
+function sortUpPrice () {
+    arrRowTable.sort((a, b) => a.price - b.price);
+    destroyTableContent();
+    for (let obj of arrRowTable) {
+        getRowTableSort(obj);
+    }
+    document.getElementById('priseTable').setAttribute('onclick', 'sortDownPrice()')
+}
+
+function sortDownPrice () {
+    arrRowTable.sort((a, b) => b.price - a.price);
+    destroyTableContent();
+    for (let obj of arrRowTable) {
+        getRowTableSort(obj);
+    }
+    document.getElementById('priseTable').setAttribute('onclick', 'sortUpPrice()')
+}
+
 openDB();
+console.log(arrRowTable);
+
+

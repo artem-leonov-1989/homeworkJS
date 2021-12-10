@@ -73,8 +73,3 @@ function addDefaultAccessories() {
     }
     getAllAccessories();
 }
-
-function sortForPrice(mode) {
-
-}
-
